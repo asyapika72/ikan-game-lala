@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://boewjpdjx5vjm"]
+
+[ext_resource type="Texture2D" uid="uid://bvm6q51kdyk1h" path="res://Tiles/Style 1/PipeStyle1.png" id="1_15o2q"]
+[ext_resource type="PackedScene" uid="uid://bdesyddc0uhen" path="res://Scenes/game_info.tscn" id="3_rvx1i"]
+
+[sub_resource type="GDScript" id="GDScript_2p81s"]
+script/source = "extends StaticBody2D
+
+@export var SPEED := 200.0
+
+func _ready() -> void:
+	randomize()
+	position = Vector2(1300, randf_range(-50, 50))
+
+func _process(delta: float) -> void:
+	position.x -= SPEED * delta
+
+	
+	if position.x < -100:
+		position = Vector2(1300, randf_range(-50, 50))
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2p81s"]
+atlas = ExtResource("1_15o2q")
+region = Rect2(0, 0, 32, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rvx1i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2p81s")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a6yce"]
+size = Vector2(30, 78)
+
+[node name="Obstacle" type="StaticBody2D" unique_id=1169063301]
+script = SubResource("GDScript_2p81s")
+SPEED = 800.0
+
+[node name="Obstacle1" type="AnimatedSprite2D" parent="." unique_id=2027384638]
+position = Vector2(45.00006, 81)
+scale = Vector2(3.5, 3.5)
+sprite_frames = SubResource("SpriteFrames_rvx1i")
+
+[node name="Obstacle2" type="AnimatedSprite2D" parent="." unique_id=1486367063]
+position = Vector2(45.00006, 563)
+scale = Vector2(3.5, 3.5)
+sprite_frames = SubResource("SpriteFrames_rvx1i")
+
+[node name="ObstacleCollision1" type="CollisionShape2D" parent="." unique_id=809495320]
+position = Vector2(45.000004, 79.00001)
+scale = Vector2(3.5, 3.5)
+shape = SubResource("RectangleShape2D_a6yce")
+
+[node name="ObstacleCollision2" type="CollisionShape2D" parent="." unique_id=1543293993]
+position = Vector2(45.00006, 563)
+scale = Vector2(3.5, 3.5)
+shape = SubResource("RectangleShape2D_a6yce")
+
+[node name="GameInfo" parent="." unique_id=1581059872 instance=ExtResource("3_rvx1i")]

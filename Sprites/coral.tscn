@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://c3ilffjhhww7r"]
+
+[ext_resource type="Texture2D" uid="uid://cg10h05s8mw2o" path="res://coralsorsomething.png" id="1_o6ike"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xyr3v"]
+size = Vector2(752, 1024)
+
+[node name="Node2D" type="Area2D" unique_id=915388865]
+
+[node name="Coralsorsomething" type="Sprite2D" parent="." unique_id=169581191]
+position = Vector2(1077, 574)
+scale = Vector2(0.5405, 0.569)
+texture = ExtResource("1_o6ike")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=121257980]
+position = Vector2(1082, 601)
+shape = SubResource("RectangleShape2D_xyr3v")

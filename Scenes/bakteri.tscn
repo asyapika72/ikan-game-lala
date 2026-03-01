@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://q6kd56gw6f74"]
+
+[ext_resource type="Texture2D" uid="uid://b12akky8glknh" path="res://Untitled4_20260228144634.png" id="1_35jo5"]
+[ext_resource type="Script" uid="uid://t4mrsg8211wq" path="res://Scenes/bakteri.gd" id="1_x5ucl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_35jo5"]
+radius = 14.061413
+
+[node name="Area2D" type="Area2D" unique_id=1963481866]
+script = ExtResource("1_x5ucl")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2031421627]
+position = Vector2(-27, 43)
+texture = ExtResource("1_35jo5")
+offset = Vector2(50, -50)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1654696786]
+position = Vector2(-70, 58.999992)
+rotation = 0.58280724
+scale = Vector2(21.135921, 37.18032)
+shape = SubResource("CircleShape2D_35jo5")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,109 @@
+[gd_scene format=3 uid="uid://dpdk3yamw8ulu"]
+
+[ext_resource type="Texture2D" uid="uid://dc7x08srcbdqd" path="res://504ab7fc7e72cb62bb85bbf171331344.jpg" id="1_8gbba"]
+[ext_resource type="Script" uid="uid://cyutu7if1n2je" path="res://Scenes/main.gd" id="1_kry3j"]
+[ext_resource type="PackedScene" uid="uid://ba0i4jnj1a1u7" path="res://Player/player.tscn" id="2_bo1nx"]
+[ext_resource type="PackedScene" uid="uid://q6kd56gw6f74" path="res://Scenes/bakteri.tscn" id="4_jjvhh"]
+[ext_resource type="FontFile" uid="uid://cmp7o2xb437u6" path="res://Daydream DEMO.otf" id="6_6bp64"]
+[ext_resource type="PackedScene" uid="uid://dopwb8112xtg2" path="res://Scenes/score.tscn" id="6_21xkr"]
+[ext_resource type="AudioStream" uid="uid://ckpgvwjo7nrim" path="res://spongey.mp3" id="7_6bp64"]
+[ext_resource type="Script" uid="uid://d01n6xoleud8b" path="res://Scenes/health_bar.gd" id="7_hptm8"]
+[ext_resource type="PackedScene" uid="uid://c3ilffjhhww7r" path="res://Sprites/coral.tscn" id="8_344ge"]
+[ext_resource type="PackedScene" uid="uid://dha002gkx855o" path="res://Sprites/hearts.tscn" id="10_d1ilt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8gbba"]
+size = Vector2(1525, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jjvhh"]
+size = Vector2(20, 665)
+
+[node name="Main" type="Node2D" unique_id=514787631]
+script = ExtResource("1_kry3j")
+
+[node name="Background" type="Node2D" parent="." unique_id=778723526]
+
+[node name="504Ab7Fc7e72Cb62Bb85Bbf171331344" type="Sprite2D" parent="Background" unique_id=1859039494]
+position = Vector2(974.00006, 590)
+scale = Vector2(3, 3)
+texture = ExtResource("1_8gbba")
+
+[node name="Player" parent="." unique_id=1008986769 instance=ExtResource("2_bo1nx")]
+visibility_layer = 3
+position = Vector2(950, 616)
+scale = Vector2(0.5, 0.5)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=105119179]
+position = Vector2(-20, -109)
+scale = Vector2(1.5, 1.5)
+
+[node name="CollisionShapeBottom" type="CollisionShape2D" parent="StaticBody2D" unique_id=1996407000]
+position = Vector2(645.3333, 700)
+shape = SubResource("RectangleShape2D_8gbba")
+
+[node name="spawner" type="Node2D" parent="StaticBody2D" unique_id=214528233]
+position = Vector2(660, 57.333336)
+rotation = 0.1578195
+scale = Vector2(333.33334, 333.33334)
+
+[node name="CollisionShapeTop" type="CollisionShape2D" parent="StaticBody2D" unique_id=743133813]
+position = Vector2(661.3333, 59.333336)
+shape = SubResource("RectangleShape2D_8gbba")
+
+[node name="CollisionShapeRight" type="CollisionShape2D" parent="StaticBody2D" unique_id=469265933]
+position = Vector2(1394, 428.6667)
+shape = SubResource("RectangleShape2D_jjvhh")
+
+[node name="CollisionShapeLeft" type="CollisionShape2D" parent="StaticBody2D" unique_id=863627158]
+position = Vector2(-73.333336, 442)
+shape = SubResource("RectangleShape2D_jjvhh")
+
+[node name="Screen" parent="." unique_id=1620509108 instance=ExtResource("6_21xkr")]
+visible = false
+offset = Vector2(-200, -265)
+transform = Transform2D(1, 0, 0, 1, -200, -265)
+
+[node name="Timer" type="Timer" parent="." unique_id=1238439992]
+wait_time = 2.0
+autostart = true
+
+[node name="Area2D" parent="Timer" unique_id=1963481866 instance=ExtResource("4_jjvhh")]
+position = Vector2(1366, 106.00003)
+scale = Vector2(0.2, 0.2)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1820808327]
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer" unique_id=2076253647]
+offset_left = 940.0
+offset_top = 45.0
+offset_right = 1043.0
+offset_bottom = 208.0
+theme_override_fonts/font = ExtResource("6_6bp64")
+theme_override_font_sizes/font_size = 100
+text = "0"
+metadata/_edit_use_anchors_ = true
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer" unique_id=328641282]
+offset_left = 41.0
+offset_top = 47.0
+offset_right = 347.0
+offset_bottom = 115.0
+theme_override_font_sizes/font_size = 45
+value = 100.0
+rounded = true
+script = ExtResource("7_hptm8")
+
+[node name="BGM" type="AudioStreamPlayer" parent="." unique_id=574773921]
+stream = ExtResource("7_6bp64")
+volume_db = -0.84
+autoplay = true
+parameters/looping = true
+
+[node name="Node2D" parent="." unique_id=915388865 instance=ExtResource("8_344ge")]
+position = Vector2(-934, 394)
+
+[node name="Node2D2" parent="." unique_id=63128873 instance=ExtResource("10_d1ilt")]
+position = Vector2(1529, -63.000008)
+scale = Vector2(0.4, 0.4)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="Timer/Area2D" to="." method="_on_area_2d_body_entered"]

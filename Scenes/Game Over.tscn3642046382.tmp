@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://w5dmobf0u8yy"]
+
+[ext_resource type="Script" uid="uid://qfegkplw3n3k" path="res://Scenes/game_over.gd" id="1_3e4dc"]
+[ext_resource type="Script" uid="uid://bqnsf5yrqykff" path="res://Scenes/score.gd" id="2_ab4sf"]
+[ext_resource type="PackedScene" uid="uid://bdesyddc0uhen" path="res://Scenes/game_info.tscn" id="2_gxl35"]
+
+[node name="Screen" type="CanvasLayer" unique_id=1620509108]
+script = ExtResource("1_3e4dc")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=925602447]
+offset_right = 1160.0
+offset_bottom = 658.0
+color = Color(0.6862745, 0, 0.20392157, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1910541873]
+offset_right = 1162.0
+offset_bottom = 662.0
+
+[node name="Game Over" type="Label" parent="MarginContainer" unique_id=569365655]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Game Over!"
+horizontal_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="." unique_id=59059840]
+anchors_preset = -1
+anchor_right = 0.017
+offset_left = 384.0
+offset_top = 367.0
+offset_right = 773.416
+offset_bottom = 457.0
+
+[node name="Score" type="Label" parent="MarginContainer2" unique_id=158888858]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_ab4sf")
+
+[node name="GameInfo" parent="." unique_id=1581059872 instance=ExtResource("2_gxl35")]

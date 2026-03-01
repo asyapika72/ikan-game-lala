@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://dh7kch7qej1ak"]
+
+[ext_resource type="FontFile" uid="uid://cmp7o2xb437u6" path="res://Daydream DEMO.otf" id="1_wt727"]
+
+[sub_resource type="FontVariation" id="FontVariation_wt727"]
+base_font = ExtResource("1_wt727")
+
+[node name="Node2D" type="CanvasLayer" unique_id=1645403780]
+
+[node name="score" type="Label" parent="." unique_id=1511324783]
+theme_override_fonts/font = SubResource("FontVariation_wt727")
+theme_override_font_sizes/font_size = 60
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1

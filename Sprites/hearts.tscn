@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dha002gkx855o"]
+
+[ext_resource type="Texture2D" uid="uid://rvs2vkucvc2k" path="res://Sprites/heart.png" id="1_6j1yq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6j1yq"]
+radius = 299.42944
+
+[node name="Node2D" type="Area2D" unique_id=63128873]
+
+[node name="Heart" type="Sprite2D" parent="." unique_id=1341362206]
+position = Vector2(738.25, 412.50006)
+scale = Vector2(0.28098962, 0.31197917)
+texture = ExtResource("1_6j1yq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2103407695]
+position = Vector2(735, 379)
+shape = SubResource("CircleShape2D_6j1yq")

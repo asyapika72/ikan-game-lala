@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://dqnng8rsavyqk"]
+
+[ext_resource type="FontFile" uid="uid://cmp7o2xb437u6" path="res://Daydream DEMO.otf" id="1_t56nh"]
+[ext_resource type="AudioStream" uid="uid://dnohhdlt6ya7" path="res://failalalal.mp3" id="3_6svnc"]
+
+[sub_resource type="GDScript" id="GDScript_xnw0w"]
+script/source = "extends Control
+
+"
+
+[sub_resource type="GDScript" id="GDScript_rwo11"]
+script/source = "extends Button
+
+func _on_pressed() -> void:
+	get_tree().change_scene_to_file(\"res://Scenes/main.tscn\")
+"
+
+[sub_resource type="FontVariation" id="FontVariation_xnw0w"]
+base_font = ExtResource("1_t56nh")
+
+[node name="Control" type="Control" unique_id=899946629]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_xnw0w")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1650479497]
+layout_mode = 0
+offset_right = 1991.0
+offset_bottom = 1127.0
+color = Color(0.009068218, 0.19785702, 0.35299298, 1)
+
+[node name="Button" type="Button" parent="." unique_id=172941677]
+layout_mode = 0
+offset_left = 705.0
+offset_top = 667.0
+offset_right = 1279.0
+offset_bottom = 910.0
+theme_override_colors/font_hover_color = Color(0.23664773, 0.642094, 0.3441946, 1)
+theme_override_font_sizes/font_size = 100
+text = "Try Again"
+script = SubResource("GDScript_rwo11")
+
+[node name="Game Over" type="Label" parent="." unique_id=1163271457]
+layout_mode = 0
+offset_left = 525.0
+offset_top = 400.0
+offset_right = 1453.0
+offset_bottom = 563.0
+theme_override_fonts/font = SubResource("FontVariation_xnw0w")
+theme_override_font_sizes/font_size = 100
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Failalalal" type="AudioStreamPlayer" parent="." unique_id=1423879013]
+stream = ExtResource("3_6svnc")
+autoplay = true
+
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
